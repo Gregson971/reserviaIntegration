@@ -1,0 +1,587 @@
+:root {
+  --primary-color: #0065fc;
+  --secondary-color: #deebff;
+  --main-background-color: #ffffff;
+  --contrast-background-color: #f2f2f2;
+  --primary-text-color: #000000;
+  --secondary-text-color: #ffffff;
+  --light-border-color: #f2f2f2;
+  --shadow-color: #cacaca;
+  --empty-star-color: #cccccc;
+  --full-star-color: #0065fc;
+  --white: #ffffff;
+  --search-bar-border-radius: 11px;
+  --soft-border-radius: 25px;
+  --circle-border-radius: 50%;
+  --spacing: 8px;
+  --spacing-16: 16px;
+  --spacing-32: 32px;
+  --filters-item-height: 40px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+}
+
+h1,
+h2,
+h3,
+a {
+  font-weight: bold;
+  color: var(--primary-text-color);
+  text-decoration: none;
+}
+
+a:active,
+a:hover,
+a:focus {
+  color: var(--primary-color);
+}
+
+/** App bar **/
+#app-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 80px;
+  padding: 0 var(--spacing-32);
+  align-items: center;
+}
+
+.brand-logo {
+  height: auto;
+  width: 70%;
+}
+
+#login-link {
+  position: relative;
+  top: 3px;
+  justify-self: center;
+  align-self: center;
+  color: var(--primary-color);
+}
+
+#main-nav {
+  height: 100%;
+  width: 20%;
+}
+
+#main-nav ul {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  justify-items: end;
+}
+
+#main-nav .nav-item {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  border-top: solid 3px var(--white);
+}
+
+#main-nav .nav-item a {
+  margin: auto;
+  font-weight: normal;
+}
+
+#main-nav .nav-item.active {
+  border-top: solid 3px var(--primary-color);
+}
+
+.nav-item.active a {
+  color: var(--primary-color);
+}
+
+@media (max-width: 1200px) {
+  .brand-logo {
+    width: 50%;
+  }
+  #main-nav {
+    width: 40%;
+  }
+}
+
+@media (max-width: 992px) {
+  #app-bar {
+    height: auto;
+    flex-direction: column;
+    align-items: start;
+    padding: 0;
+  }
+
+  .brand-logo {
+    margin-left: var(--spacing-32);
+    margin-top: var(--spacing-16);
+  }
+
+  #login-link {
+    position: absolute;
+    top: var(--spacing-32);
+    right: 0;
+    margin-right: var(--spacing-32);
+  }
+
+  #main-nav {
+    width: 100%;
+  }
+
+  #main-nav .nav-item {
+    padding: var(--spacing-16);
+    border-top: none;
+    border-bottom: solid 3px var(--white);
+  }
+
+  #main-nav .nav-item.active {
+    border-top: none;
+    border-bottom: solid 3px var(--primary-color);
+  }
+}
+
+/** App content **/
+#app-content {
+  padding: var(--spacing-32);
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 576px) {
+  #app-content {
+    padding: 0;
+  }
+
+  #search-engine-wrapper {
+    padding: var(--spacing-32);
+  }
+}
+
+#site-description {
+  margin-bottom: var(--spacing);
+}
+
+#site-sub-description {
+  margin-top: 0;
+}
+
+/** Search bar **/
+#search-bar {
+  width: 35%;
+  display: flex;
+  flex-flow: row nowrap;
+  border-top: 1px solid var(--light-border-color);
+  border-bottom: 1px solid var(--light-border-color);
+  border-radius: var(--search-bar-border-radius);
+  padding: 0;
+}
+
+#search-bar-icon {
+  width: 50px;
+  min-width: 50px;
+  display: flex;
+  background-color: var(--contrast-background-color);
+  border-top-left-radius: var(--search-bar-border-radius);
+  border-bottom-left-radius: var(--search-bar-border-radius);
+}
+
+#search-bar-icon i {
+  margin: auto;
+}
+
+#search-bar-input {
+  flex: 2;
+  border: none;
+  padding-left: var(--spacing-16);
+  font-weight: bold;
+}
+
+#search-bar-button {
+  background-color: var(--primary-color);
+  color: var(--secondary-text-color);
+  border: none;
+  border-top-right-radius: var(--search-bar-border-radius);
+  border-bottom-right-radius: var(--search-bar-border-radius);
+  padding: var(--spacing-16) var(--spacing-16);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#search-bar-button-label-mobile {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  #search-bar {
+    margin: auto;
+    width: 70%;
+  }
+}
+
+@media (max-width: 576px) {
+  #search-bar {
+    width: 90%;
+  }
+
+  #search-bar-button {
+    width: 50px;
+    min-width: 50px;
+    border-radius: var(--search-bar-border-radius);
+  }
+
+  #search-bar-button-label {
+    display: none;
+  }
+
+  #search-bar-button-label-mobile {
+    display: inline-block;
+  }
+}
+
+/** Filters bar **/
+#filters-bar {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+#filters-bar-title {
+  margin-right: var(--spacing-32);
+}
+
+#filters-collection {
+  display: flex;
+  flex-flow: row wrap;
+  list-style-type: none;
+  padding: 0;
+}
+
+.filters-item {
+  display: flex;
+  height: var(--filters-item-height);
+  margin: var(--spacing);
+  padding: 0 var(--spacing-16) 0 0;
+  border: solid 2px var(--light-border-color);
+  border-left: none;
+  border-radius: var(--soft-border-radius);
+  background-color: var(--main-background-color);
+  cursor: pointer;
+}
+
+.filters-item:hover,
+.filters-item:focus {
+  border-color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.filters-item-icon {
+  display: inline-block;
+  position: relative;
+  top: -2px;
+  left: -2px;
+  width: var(--filters-item-height);
+  height: var(--filters-item-height);
+  line-height: var(--filters-item-height);
+  margin-right: var(--spacing);
+  border-radius: var(--circle-border-radius);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.filters-item:hover .filters-item-icon,
+.filters-item:focus .filters-item-icon {
+  background-color: var(--primary-color);
+  color: var(--secondary-text-color);
+}
+
+.filters-item-label {
+  margin: auto;
+  font-weight: bold;
+}
+
+.fa-info-circle {
+  color: var(--primary-color);
+}
+
+/** Lodgings and activities **/
+#lodgings {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  grid-template-rows: auto;
+  grid-auto-flow: column;
+  column-gap: var(--spacing-32);
+}
+
+#all-lodgings,
+#featured-lodgings,
+#activities {
+  padding: var(--spacing-32);
+  border-radius: var(--soft-border-radius);
+}
+
+#all-lodgings,
+#featured-lodgings {
+  background-color: var(--contrast-background-color);
+}
+
+.expand-more {
+  display: block;
+  margin-top: var(--spacing-32);
+}
+
+#featured-lodgings-icon {
+  float: right;
+}
+
+@media (max-width: 1200px) {
+  #lodgings {
+    grid-template-columns: 1fr;
+  }
+
+  #all-lodgings {
+    grid-column: 1;
+    grid-row: 2;
+    background-color: var(--main-background-color);
+  }
+
+  #featured-lodgings {
+    grid-column: 1;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 576px) {
+  #featured-lodgings {
+    border-radius: 0;
+  }
+}
+
+/** Cards collection **/
+.cards-collection {
+  display: grid;
+  gap: var(--spacing-32);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--main-background-color);
+  border-radius: var(--soft-border-radius);
+  box-shadow: 1px 1px var(--spacing-16) var(--shadow-color);
+  padding: var(--spacing);
+}
+
+.card:hover,
+.card:focus {
+  cursor: pointer;
+  box-shadow: 1px 1px var(--spacing-16) var(--spacing) var(--shadow-color);
+  transform: scale(1.05);
+}
+
+.card-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  object-position: center center;
+  border-top-left-radius: var(--soft-border-radius);
+  border-top-right-radius: var(--soft-border-radius);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  margin: 0 var(--spacing);
+}
+
+.card-title {
+  margin: var(--spacing) 0;
+}
+
+.card-description {
+  margin: 0 0 var(--spacing) 0;
+}
+
+.lodging-price {
+  font-weight: bold;
+}
+
+.lodging-rating {
+  flex: 2;
+  display: flex;
+  align-items: flex-end;
+}
+
+.cards-collection-list .card {
+  flex-direction: row;
+}
+
+.cards-collection-list .card-image {
+  width: 30%;
+  height: 140px;
+  border-top-right-radius: 0;
+  border-bottom-left-radius: var(--soft-border-radius);
+}
+
+.cards-collection-list .card-content {
+  margin-bottom: var(--spacing);
+  width: 60%;
+}
+
+.cards-collection-gallery {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cards-collection-masonry {
+  grid-auto-flow: column;
+}
+
+.masonry-column {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: 130px 0 0 0 0 130px;
+  gap: var(--spacing-32);
+}
+
+.masonry-column .card {
+  padding: 0;
+}
+
+.masonry-column .card-image {
+  height: 100px;
+  flex: 2;
+}
+
+.masonry-full {
+  grid-row: span 6;
+}
+
+.masonry-half {
+  grid-row: span 3;
+}
+
+.masonry-taller {
+  grid-row: span 4;
+}
+
+.masonry-smaller {
+  grid-row: span 2;
+}
+
+@media (max-width: 1200px) {
+  .cards-collection-list {
+    grid-auto-flow: column;
+  }
+}
+
+@media (max-width: 992px) {
+  .cards-collection-list {
+    grid-template-columns: auto 80% auto;
+  }
+
+  .cards-collection-list .card {
+    grid-column: 2;
+  }
+
+  .cards-collection-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards-collection-masonry {
+    grid-auto-flow: row;
+  }
+}
+
+@media (max-width: 576px) {
+  .cards-collection-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-collection-list {
+    grid-template-columns: 1fr;
+  }
+
+  .cards-collection-list .card {
+    grid-column: 1;
+  }
+
+  .masonry-column {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    grid-auto-rows: 1fr;
+    grid-auto-flow: row;
+  }
+
+  .masonry-column .card {
+    grid-row: span 1;
+  }
+
+  .masonry-column .card-image {
+    max-height: 160px;
+    flex: 1;
+  }
+}
+
+/** Lodging rating **/
+.rating-star {
+  color: var(--empty-star-color);
+}
+
+.lodging-rating-1 .rating-star:nth-child(-n + 1) {
+  color: var(--full-star-color);
+}
+
+.lodging-rating-2 .rating-star:nth-child(-n + 2) {
+  color: var(--full-star-color);
+}
+
+.lodging-rating-3 .rating-star:nth-child(-n + 3) {
+  color: var(--full-star-color);
+}
+
+.lodging-rating-4 .rating-star:nth-child(-n + 4) {
+  color: var(--full-star-color);
+}
+
+.lodging-rating-5 .rating-star:nth-child(-n + 5) {
+  color: var(--full-star-color);
+}
+
+/** Footer **/
+#app-footer {
+  width: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  padding: var(--spacing-32);
+  gap: var(--spacing-32);
+  background-color: var(--contrast-background-color);
+}
+
+#app-footer nav ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+#app-footer nav ul li {
+  margin: var(--spacing-16) 0;
+}
+
+#app-footer nav ul a {
+  font-weight: normal;
+}
+
+@media (max-width: 576px) {
+  #app-footer {
+    grid-auto-flow: row;
+  }
+}
